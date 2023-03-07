@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+
+leap_year(){
+if [[ $1 -lt 1582 ]]; then
+    echo "Not within the Gregorian calendar period"
+elif [ $(($1 % 4)) -ne 0 ]; then
+    echo "Common year"
+elif [ $(($1 % 100)) -ne 0 ]; then
+    echo "Leap year"
+elif [ $(($1 % 400)) -ne 0 ]; then
+    echo "Common year"
+else
+    echo "Leap year"
+fi
+}
+
+month_day(){
+    case $1 in
+        1|3|5|7|8|10|12)
+            echo 31 ;;
+        4|6|9|11)
+            echo 30 ;;
+        2)
+           echo 28 ;;
+        *)
+            echo "Invalid month" ;;
+    esac
+}
+
+
+
+leap_year "$1"
+month_day "$2"
